@@ -3,7 +3,6 @@
  */
 package bayesianNetwork;
 
-import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
 import javax.swing.JFrame;
@@ -19,13 +18,17 @@ public class InterfazGrafica extends JFrame {
 	
 	public static final String NOMBRE_FRAME = "Bayesian Game";	// Nombre del frame
 	
-	private AccionActual actualAction; // Panel para establecer la acción actual
+	private AccionActual actualAction; 	// Panel para establecer la acción actual
+	private Sensores panelSensores;		// Panel para los sensores
 	
 	public InterfazGrafica() {
 		this.setTitle(NOMBRE_FRAME);
 		this.setSize(WIDTH, HEIGHT);
 		this.setLayout(new GridLayout(ROWS, COLUMNS));
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		actualAction = new AccionActual();
+		panelSensores = new Sensores();
+		this.add(panelSensores);
 		this.add(actualAction);
 		this.setVisible(true);
 		
