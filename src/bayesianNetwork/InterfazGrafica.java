@@ -3,8 +3,7 @@
  */
 package bayesianNetwork;
 
-import java.awt.GridLayout;
-
+import java.awt.BorderLayout;
 import javax.swing.JFrame;
 
 public class InterfazGrafica extends JFrame {
@@ -13,7 +12,7 @@ public class InterfazGrafica extends JFrame {
 	public static final int WIDTH = 800;		// Ancho del frame
 	public static final int HEIGHT = 600;		// Alto del frame
 	
-	public static final int ROWS = 1;		// Filas para el gridlayout
+	public static final int ROWS = 2;		// Filas para el gridlayout
 	public static final int COLUMNS = 1;	// Columnas para el gridlayout
 	
 	public static final String NOMBRE_FRAME = "Bayesian Game";	// Nombre del frame
@@ -24,14 +23,21 @@ public class InterfazGrafica extends JFrame {
 	public InterfazGrafica() {
 		this.setTitle(NOMBRE_FRAME);
 		this.setSize(WIDTH, HEIGHT);
-		this.setLayout(new GridLayout(ROWS, COLUMNS));
+		this.setLayout(new BorderLayout());
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		actualAction = new AccionActual();
 		panelSensores = new Sensores();
-		this.add(panelSensores);
-		this.add(actualAction);
-		this.setVisible(true);
-		
+		this.add(panelSensores, BorderLayout.SOUTH);
+		this.add(actualAction, BorderLayout.NORTH);
+		construyeRed();
+	}
+	
+	public void construyeRed() {
+		try {
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public AccionActual getActualAction() {

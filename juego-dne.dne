@@ -1,0 +1,239 @@
+// ~->[DNET-1]->~
+
+// File created by an unlicensed user using Netica 5.18 on Mar 26, 2015 at 13:41:20.
+
+bnet juego_dne {
+AutoCompile = TRUE;
+autoupdate = TRUE;
+whenchanged = 1427377269;
+
+visual V1 {
+	defdispform = BELIEFBARS;
+	nodelabeling = TITLE;
+	NodeMaxNumEntries = 50;
+	nodefont = font {shape= "Arial"; size= 9;};
+	linkfont = font {shape= "Arial"; size= 9;};
+	windowposn = (25, 25, 1138, 563);
+	resolution = 72;
+	drawingbounds = (1419, 771);
+	showpagebreaks = FALSE;
+	usegrid = TRUE;
+	gridspace = (6, 6);
+	NodeSet Node {BuiltIn = 1; Color = 0x00E1E1E1;};
+	NodeSet Nature {BuiltIn = 1; Color = 0x00F8EED2;};
+	NodeSet Deterministic {BuiltIn = 1; Color = 0x00D3CAA6;};
+	NodeSet Finding {BuiltIn = 1; Color = 0x00C8C8C8;};
+	NodeSet Constant {BuiltIn = 1; Color = 0x00FFFFFF;};
+	NodeSet ConstantValue {BuiltIn = 1; Color = 0x00FFFFB4;};
+	NodeSet Utility {BuiltIn = 1; Color = 0x00FFBDBD;};
+	NodeSet Decision {BuiltIn = 1; Color = 0x00DEE8FF;};
+	NodeSet Documentation {BuiltIn = 1; Color = 0x00F0FAFA;};
+	NodeSet Title {BuiltIn = 1; Color = 0x00FFFFFF;};
+	PrinterSetting A {
+		margins = (1270, 1270, 1270, 1270);
+		};
+	};
+
+node ST {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (ATACAR, BUSCAR_ARMAS, BUSCAR_ENERGIA, EXPLORAR, HUIR, DETECTAR_PELIGRO);
+	parents = ();
+	whenchanged = 1427377239;
+	evidence = HUIR;
+	belief = (0, 0, 0, 0, 1, 0);
+	visual V1 {
+		center = (678, 72);
+		height = 1;
+		};
+	};
+
+node B {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (ATACAR, BUSCAR_ARMAS, BUSCAR_ENERGIA, EXPLORAR, HUIR, DETECTAR_PELIGRO);
+	parents = (ST);
+	probs = 
+		// ATACAR       BUSCAR ARMAS BUSCAR ENERGIA EXPLORAR   HUIR         DETECTAR PELIGRO  // ST               
+		  (0.95,        0.01,        0.01,        0.01,        0.01,        0.01,         // ATACAR           
+		   0.48,        0.48,        0.01,        0.01,        0.01,        0.01,         // BUSCAR ARMAS     
+		   0.48,        0.01,        0.48,        0.01,        0.01,        0.01,         // BUSCAR ENERGIA   
+		   0.48,        0.01,        0.01,        0.48,        0.01,        0.01,         // EXPLORAR         
+		   0.48,        0.01,        0.01,        0.01,        0.48,        0.01,         // HUIR             
+		   0.48,        0.01,        0.01,        0.01,        0.01,        0.48);        // DETECTAR PELIGRO ;
+	title = "ST+1";
+	whenchanged = 1427377190;
+	belief = (0.48, 0.01, 0.01, 0.01, 0.48, 0.01);
+	visual V1 {
+		center = (678, 240);
+		height = 2;
+		};
+	};
+
+node OW {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (ARMADO, DESARMADO);
+	parents = (B);
+	probs = 
+		// ARMADO       DESARMADO     // B                
+		  (0.1,         0.9,          // ATACAR           
+		   0.4,         0.6,          // BUSCAR ARMAS     
+		   0.5,         0.5,          // BUSCAR ENERGIA   
+		   0.2,         0.8,          // EXPLORAR         
+		   0.8,         0.2,          // HUIR             
+		   0.3,         0.7);         // DETECTAR PELIGRO ;
+	numcases = 1;
+	whenchanged = 1427377269;
+	belief = (0.446, 0.554);
+	visual V1 {
+		center = (186, 462);
+		height = 9;
+		};
+	};
+
+node C {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (ARMADO, DESARMADO);
+	parents = (B);
+	probs = 
+		// ARMADO       DESARMADO     // B                
+		  (0.9,         0.1,          // ATACAR           
+		   0,           1,            // BUSCAR ARMAS     
+		   0.2,         0.8,          // BUSCAR ENERGIA   
+		   0.85,        0.15,         // EXPLORAR         
+		   0,           1,            // HUIR             
+		   0.4,         0.6);         // DETECTAR PELIGRO ;
+	numcases = 1;
+	title = "W";
+	whenchanged = 1427377268;
+	belief = (0.4465, 0.5535);
+	visual V1 {
+		center = (408, 462);
+		height = 8;
+		};
+	};
+
+node HN {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (SI, NO);
+	parents = (B);
+	probs = 
+		// SI           NO            // B                
+		  (0.3,         0.7,          // ATACAR           
+		   0.5,         0.5,          // BUSCAR ARMAS     
+		   0.4,         0.6,          // BUSCAR ENERGIA   
+		   0.2,         0.8,          // EXPLORAR         
+		   0.65,        0.35,         // HUIR             
+		   0.8,         0.2);         // DETECTAR PELIGRO ;
+	whenchanged = 1427376402;
+	belief = (0.475, 0.525);
+	visual V1 {
+		center = (594, 462);
+		height = 7;
+		};
+	};
+
+node NE {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (MUCHOS, POCOS);
+	parents = (B);
+	probs = 
+		// MUCHOS       POCOS         // B                
+		  (0.1,         0.9,          // ATACAR           
+		   0.8,         0.2,          // BUSCAR ARMAS     
+		   0.72,        0.28,         // BUSCAR ENERGIA   
+		   0.15,        0.85,         // EXPLORAR         
+		   0.9,         0.1,          // HUIR             
+		   0.95,        0.05);        // DETECTAR PELIGRO ;
+	numcases = 1;
+	whenchanged = 1427376492;
+	belief = (0.5062, 0.4938);
+	visual V1 {
+		center = (780, 462);
+		height = 6;
+		};
+	};
+
+node PW {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (SI, NO);
+	parents = (B);
+	probs = 
+		// SI           NO            // B                
+		  (0.5,         0.5,          // ATACAR           
+		   0.95,        0.05,         // BUSCAR ARMAS     
+		   0.5,         0.5,          // BUSCAR ENERGIA   
+		   0.4,         0.6,          // EXPLORAR         
+		   0.4,         0.6,          // HUIR             
+		   0,           1);           // DETECTAR PELIGRO ;
+	numcases = 1;
+	whenchanged = 1427376576;
+	belief = (0.4505, 0.5495);
+	visual V1 {
+		center = (960, 462);
+		height = 5;
+		};
+	};
+
+node PH {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (SI, NO);
+	parents = (B);
+	probs = 
+		// SI           NO            // B                
+		  (0.5,         0.5,          // ATACAR           
+		   0.5,         0.5,          // BUSCAR ARMAS     
+		   0.95,        0.05,         // BUSCAR ENERGIA   
+		   0.4,         0.6,          // EXPLORAR         
+		   0.4,         0.6,          // HUIR             
+		   0.5,         0.5);         // DETECTAR PELIGRO ;
+	whenchanged = 1427376854;
+	belief = (0.4555, 0.5445);
+	visual V1 {
+		center = (1134, 462);
+		height = 4;
+		};
+	};
+
+node A {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (ALTO, BAJO);
+	parents = (B);
+	probs = 
+		// ALTO         BAJO          // B                
+		  (0.9,         0.1,          // ATACAR           
+		   0.6,         0.4,          // BUSCAR ARMAS     
+		   0.1,         0.9,          // BUSCAR ENERGIA   
+		   0.8,         0.2,          // EXPLORAR         
+		   0.1,         0.9,          // HUIR             
+		   0.15,        0.85);        // DETECTAR PELIGRO ;
+	numcases = 1;
+	title = "H";
+	whenchanged = 1427376858;
+	belief = (0.4965, 0.5035);
+	visual V1 {
+		center = (1338, 456);
+		height = 3;
+		link 1 {
+			path = ((797, 278), (1265, 432));
+			};
+		};
+	};
+ElimOrder = (OW, C, HN, NE, PW, PH, A, ST, B);
+};

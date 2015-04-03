@@ -7,7 +7,6 @@ import java.awt.FlowLayout;
 import java.util.Vector;
 
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class AccionActual extends JPanel {
@@ -25,15 +24,14 @@ public class AccionActual extends JPanel {
 		
 		Vector<String> auxVector = new Vector<String>();
 		RellenaAcciones(auxVector);
+		
 		setComboAccionActual(new JComboBox(auxVector));
-		
-		JLabel etiqueta = new JLabel(TEXTO_LABEL);
-		
-		this.add(etiqueta);
 		this.add(getComboAccionActual());
 	}
 	
 	private void RellenaAcciones(Vector<String> a) {
+		a.add("Accion actual");
+		a.add("------------");
 		a.add("Atacar");
 		a.add("BuscarArmas");
 		a.add("BuscarEnergia");

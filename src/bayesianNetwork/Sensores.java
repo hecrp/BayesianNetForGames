@@ -8,7 +8,6 @@ import java.awt.GridLayout;
 import java.util.Vector;
 
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Sensores extends JPanel {
@@ -28,6 +27,7 @@ public class Sensores extends JPanel {
 		JPanel conjuntoSensores = new JPanel();
 		conjuntoSensores.setLayout(new FlowLayout());
 		rellenaSensores();
+		
 		conjuntoSensores.add(sensorH);
 		conjuntoSensores.add(sensorHN);
 		conjuntoSensores.add(sensorPW);
@@ -36,7 +36,6 @@ public class Sensores extends JPanel {
 		conjuntoSensores.add(sensorOW);
 		conjuntoSensores.add(sensorNE);
 		
-		this.add(new JLabel(TEXTO_LABEL));
 		this.add(conjuntoSensores);
 	}
 	
@@ -45,30 +44,62 @@ public class Sensores extends JPanel {
 		JComboBox dummyComboBox;
 		
 		// Rellenando sensor H
+		auxVector.add("H");
+		auxVector.add("---");
 		auxVector.add("Alto");
 		auxVector.add("Bajo");
 		dummyComboBox = new JComboBox(auxVector);
 		setSensorH(dummyComboBox);
 		
-		// Rellenando sensores HN, PW y PH
+		// Rellenando sensor HN
 		auxVector.clear();
+		auxVector.add("HN");
+		auxVector.add("---");
 		auxVector.add("Si");
 		auxVector.add("No");
 		dummyComboBox = new JComboBox(auxVector);
 		setSensorHN(dummyComboBox);
+		
+		// Rellenando sensor PW
+		auxVector.clear();
+		auxVector.add("PW");
+		auxVector.add("---");
+		auxVector.add("Si");
+		auxVector.add("No");
+		dummyComboBox = new JComboBox(auxVector);
 		setSensorPW(dummyComboBox);
+
+		// Rellenando sensor PH
+		auxVector.clear();
+		auxVector.add("PH");
+		auxVector.add("---");
+		auxVector.add("Si");
+		auxVector.add("No");
+		dummyComboBox = new JComboBox(auxVector);
 		setSensorPH(dummyComboBox);
 		
-		// Rellenando sensores W y OW
+		// Rellenando sensor W
 		auxVector.clear();
+		auxVector.add("W");
+		auxVector.add("--------");
 		auxVector.add("Armado");
 		auxVector.add("Desarmado");
 		dummyComboBox = new JComboBox(auxVector);
 		setSensorW(dummyComboBox);
+		
+		// Rellenando sensor OW
+		auxVector.clear();
+		auxVector.add("OW");
+		auxVector.add("--------");
+		auxVector.add("Armado");
+		auxVector.add("Desarmado");
+		dummyComboBox = new JComboBox(auxVector);
 		setSensorOW(dummyComboBox);
 		
 		// Rellenando sensor NE
 		auxVector.clear();
+		auxVector.add("NE");
+		auxVector.add("------");
 		auxVector.add("Muchos");
 		auxVector.add("Pocos");
 		dummyComboBox = new JComboBox(auxVector);
