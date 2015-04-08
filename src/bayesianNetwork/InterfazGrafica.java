@@ -4,6 +4,7 @@
 package bayesianNetwork;
 
 import java.awt.BorderLayout;
+
 import javax.swing.JFrame;
 
 public class InterfazGrafica extends JFrame {
