@@ -7,7 +7,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.util.Vector;
+import java.util.ArrayList;
 
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
@@ -28,11 +28,20 @@ public class Sensores extends JPanel {
 	InterfazGrafica ig;
 	
 	public Sensores(InterfazGrafica ig_) {
+		Oyente oyente = new Oyente();
 		ig = ig_;
 		this.setLayout(new GridLayout(2,1));
 		JPanel conjuntoSensores = new JPanel();
 		conjuntoSensores.setLayout(new FlowLayout());
 		rellenaSensores();
+		
+		sensorH.addItemListener(oyente);
+		sensorHN.addItemListener(oyente);
+		sensorPW.addItemListener(oyente);
+		sensorPH.addItemListener(oyente);
+		sensorW.addItemListener(oyente);
+		sensorOW.addItemListener(oyente);
+		sensorNE.addItemListener(oyente);
 		
 		conjuntoSensores.add(sensorH);
 		conjuntoSensores.add(sensorHN);
@@ -46,7 +55,7 @@ public class Sensores extends JPanel {
 	}
 	
 	private void rellenaSensores() {
-		Vector<String> auxVector = new Vector<String>();
+		ArrayList<String> auxVector = new ArrayList<String>();
 		JComboBox dummyComboBox;
 		
 		// Rellenando sensor H
@@ -54,7 +63,7 @@ public class Sensores extends JPanel {
 		//auxVector.add("---");
 		auxVector.add("ALTO");
 		auxVector.add("BAJO");
-		dummyComboBox = new JComboBox(auxVector);
+		dummyComboBox = new JComboBox(auxVector.toArray());
 		setSensorH(dummyComboBox);
 		
 		// Rellenando sensor HN
@@ -63,7 +72,7 @@ public class Sensores extends JPanel {
 		//auxVector.add("---");
 		auxVector.add("SI");
 		auxVector.add("NO");
-		dummyComboBox = new JComboBox(auxVector);
+		dummyComboBox = new JComboBox(auxVector.toArray());
 		setSensorHN(dummyComboBox);
 		
 		// Rellenando sensor PW
@@ -72,7 +81,7 @@ public class Sensores extends JPanel {
 		//auxVector.add("---");
 		auxVector.add("SI");
 		auxVector.add("NO");
-		dummyComboBox = new JComboBox(auxVector);
+		dummyComboBox = new JComboBox(auxVector.toArray());
 		setSensorPW(dummyComboBox);
 
 		// Rellenando sensor PH
@@ -81,7 +90,7 @@ public class Sensores extends JPanel {
 		//auxVector.add("---");
 		auxVector.add("SI");
 		auxVector.add("NO");
-		dummyComboBox = new JComboBox(auxVector);
+		dummyComboBox = new JComboBox(auxVector.toArray());
 		setSensorPH(dummyComboBox);
 		
 		// Rellenando sensor W
@@ -90,7 +99,7 @@ public class Sensores extends JPanel {
 		//auxVector.add("--------");
 		auxVector.add("ARMADO");
 		auxVector.add("DESARMADO");
-		dummyComboBox = new JComboBox(auxVector);
+		dummyComboBox = new JComboBox(auxVector.toArray());
 		setSensorW(dummyComboBox);
 		
 		// Rellenando sensor OW
@@ -99,7 +108,7 @@ public class Sensores extends JPanel {
 		//auxVector.add("--------");
 		auxVector.add("ARMADO");
 		auxVector.add("DESARMADO");
-		dummyComboBox = new JComboBox(auxVector);
+		dummyComboBox = new JComboBox(auxVector.toArray());
 		setSensorOW(dummyComboBox);
 		
 		// Rellenando sensor NE
@@ -108,7 +117,7 @@ public class Sensores extends JPanel {
 		//auxVector.add("------");
 		auxVector.add("MUCHOS");
 		auxVector.add("POCOS");
-		dummyComboBox = new JComboBox(auxVector);
+		dummyComboBox = new JComboBox(auxVector.toArray());
 		setSensorNE(dummyComboBox);
 	}
 

@@ -6,7 +6,7 @@ package bayesianNetwork;
 import java.awt.FlowLayout;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.util.Vector;
+import java.util.ArrayList;
 
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
@@ -15,12 +15,8 @@ import norsys.netica.NeticaException;
 
 public class AccionActual extends JPanel {
 	private static final long serialVersionUID = 1L;
-	public static final String TEXTO_LABEL = "Seleccione la accion actual";	// Texto que aparecerá en el label
-	/*
-	public static final int ROWS = 2;		// Filas para el gridlayout
-	public static final int COLUMNS = 1;	// Columnas para el gridlayout
-	*/
 	
+	public static final String TEXTO_LABEL = "Seleccione la accion actual";	// Texto que aparecerá en el label
 	InterfazGrafica ig;
 	private JComboBox comboAccionActual; // ComboBox para las acciones actuales
 	
@@ -28,24 +24,14 @@ public class AccionActual extends JPanel {
 		ig = ig_;
 		this.setLayout(new FlowLayout());
 		
-		Vector<String> auxVector = new Vector<String>();
+		ArrayList<String> auxVector = new ArrayList<String>();
 		RellenaAcciones(auxVector);
-		setComboAccionActual(new JComboBox(auxVector));
-		comboAccionActual.addItemListener(new ItemListener() {
-			
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				try {
-					ig.muestraResultado();
-				} catch (NeticaException e1) {
-					e1.printStackTrace();
-				}
-			}
-		});
+		setComboAccionActual(new JComboBox(auxVector.toArray()));
+		comboAccionActual.addItemListener(new Oyente());
 		this.add(getComboAccionActual());
 	}
 	
-	private void RellenaAcciones(Vector<String> a) {
+	private void RellenaAcciones(ArrayList<String> a) {
 		//a.add("Accion actual");
 		//a.add("------------");
 		a.add("ATACAR");
@@ -63,4 +49,17 @@ public class AccionActual extends JPanel {
 	public void setComboAccionActual(JComboBox comboAccionActual) {
 		this.comboAccionActual = comboAccionActual;
 	}
+	
+	public class Oyente implements ItemListener {
+
+		@Override
+		public void itemStateChanged(ItemEvent e) {
+				try {
+					ig.muestraResultado();
+				} catch (NeticaException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+		}
+	};
 }

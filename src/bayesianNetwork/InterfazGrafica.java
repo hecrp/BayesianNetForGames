@@ -29,6 +29,9 @@ public class InterfazGrafica extends JFrame {
 	private AccionActual actualAction; 	// Panel para establecer la acción actual
 	private Sensores panelSensores;		// Panel para los sensores
 	
+	Net net;
+	Environ env;
+	
 	Node ST;
 	Node ST1;
 	
@@ -39,8 +42,11 @@ public class InterfazGrafica extends JFrame {
 	Node W;
 	Node OW;
 	Node NE;
+	JPanel panelDatos;
 	
 	public InterfazGrafica() throws NeticaException {
+		panelDatos = new JPanel();
+		panelDatos.setLayout(new GridLayout(6,1));
 		this.setTitle(NOMBRE_FRAME);
 		this.setSize(WIDTH, HEIGHT);
 		this.setLayout(new BorderLayout());
@@ -57,8 +63,8 @@ public class InterfazGrafica extends JFrame {
 	public void construyeRed() {
 		try {
 			Node.setConstructorClass("norsys.neticaEx.aliases.Node");
-			Environ env = new Environ(null);
-			Net net = new Net();
+			env = new Environ(null);
+			net = new Net();
 			net.setName("BayesianGame");
 			
 			ST = new Node("ST", "ATACAR, BUSCAR_ARMAS,BUSCAR_ENERGIA, EXPLORAR, HUIR, DETECTAR_PELIGRO", net);
@@ -93,9 +99,6 @@ public class InterfazGrafica extends JFrame {
 			
 			// ST1
 			float [] a = {(float)0.95, (float)0.01, (float)0.01, (float)0.01, (float)0.01, (float)0.01};
-			
-			for(int i = 0 ; i < 5; i++)
-				System.out.println(a[i]);
 			ST1.setCPTable("ATACAR", a);
 			float [] b = {(float)0.48, (float)0.48, (float)0.01, (float)0.01, (float)0.01, (float)0.01};
 			ST1.setCPTable("BUSCAR_ARMAS", b);
@@ -207,7 +210,6 @@ public class InterfazGrafica extends JFrame {
 			H.setCPTable("DETECTAR_PELIGRO", z);
 			
 			net.compile();
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -216,6 +218,7 @@ public class InterfazGrafica extends JFrame {
 	public void muestraResultado() throws NeticaException {
 		
 		ST.enterFinding((String)getActualAction().getComboAccionActual().getSelectedItem());
+		
 		H.enterFinding((String)getPanelSensores().getSensorH().getSelectedItem());
 		PH.enterFinding((String)getPanelSensores().getSensorPH().getSelectedItem());
 		PW.enterFinding((String)getPanelSensores().getSensorPW().getSelectedItem());
@@ -231,9 +234,7 @@ public class InterfazGrafica extends JFrame {
 		double probHuir = ST1.getBelief("HUIR");
 		double probPeligro = ST1.getBelief("DETECTAR_PELIGRO");
 		
-		JPanel panelDatos = new JPanel();
-		
-		panelDatos.setLayout(new GridLayout(6,1));
+		panelDatos.removeAll();
 		
 		panelDatos.add(new JLabel("Atacar = " + probAtacar));
 		panelDatos.add(new JLabel("Buscar Armas = " + probArmas));
@@ -243,7 +244,16 @@ public class InterfazGrafica extends JFrame {
 		panelDatos.add(new JLabel("Detectar Peligro = " + probPeligro));
 		
 		this.add(panelDatos, BorderLayout.CENTER);
-		this.repaint();
+		this.validate();
+		
+		ST.retractFindings();
+		H.retractFindings();
+		PH.retractFindings();
+		PW.retractFindings();
+		NE.retractFindings();
+		HN.retractFindings();
+		W.retractFindings();
+		OW.retractFindings();
 	}
 
 	public AccionActual getActualAction() {
