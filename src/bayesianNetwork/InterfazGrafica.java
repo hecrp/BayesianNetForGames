@@ -71,68 +71,116 @@ public class InterfazGrafica extends JFrame {
 			ST1.addLink(NE);
 			
 			// ST1
-			ST1.setCPTable("ATACAR", 0.95, 0.1, 0.1, 0.1, 0.1, 0.1);
-			ST1.setCPTable("BUSCAR ARMAS", 0.48, 0.48, 0.1, 0.1, 0.1, 0.1);
-			ST1.setCPTable("BUSCAR ENERGIA", 0.48, 0.1, 0.48, 0.1, 0.1, 0.1);
-			ST1.setCPTable("EXPLORAR", 0.48, 0.1, 0.1, 0.48, 0.1, 0.1);
-			ST1.setCPTable("HUIR", 0.48, 0.1, 0.1, 0.1, 0.48, 0.1);
-			ST1.setCPTable("DETECTAR PELIGRO", 0.48, 0.1, 0.1, 0.1, 0.1, 0.48);
+			float [] a = {(float)0.95, (float)0.1, (float)0.1, (float)0.1, (float)0.1, (float)0.1};
+			ST1.setCPTable("ATACAR", a);
+			float [] b = {(float)0.48, (float)0.48, (float)0.1, (float)0.1, (float)0.1, (float)0.1};
+			ST1.setCPTable("BUSCAR ARMAS", b);
+			float [] c = {(float)0.48, (float)0.1, (float)0.48, (float)0.1, (float)0.1, (float)0.1};
+			ST1.setCPTable("BUSCAR ENERGIA", c);
+			float [] d = {(float)0.48, (float)0.1, (float)0.1, (float)0.48, (float)0.1, (float)0.1};
+			ST1.setCPTable("EXPLORAR", d);
+			float [] e = {(float)0.48, (float)0.1, (float)0.1, (float)0.1, (float)0.48, (float)0.1};
+			ST1.setCPTable("HUIR", e);
+			float [] f = {(float)0.48, (float)0.1, (float)0.1, (float)0.1, (float)0.1, (float)0.48};
+			ST1.setCPTable("DETECTAR PELIGRO", f);
 			
 			// OW
-			OW.setCPTable("ATACAR", 0.1, 0.9);
-			OW.setCPTable("BUSCAR ARMAS", 0.4, 0.6);
-			OW.setCPTable("BUSCAR ENERGIA", 0.5, 0.5);
-			OW.setCPTable("EXPLORAR", 0.2, 0.8);
-			OW.setCPTable("HUIR", 0.8, 0.2);
-			OW.setCPTable("DETECTAR PELIGRO", 0.3, 0.7);
+			float [] g = {(float)0.1, (float)0.9};
+			OW.setCPTable("ATACAR", g);
+			float [] h = {(float)0.4, (float)0.6};
+			OW.setCPTable("BUSCAR ARMAS", h);
+			float [] i = {(float)0.5, (float)0.5};
+			OW.setCPTable("BUSCAR ENERGIA",i);
+			float [] j = {(float)0.2, (float)0.8};
+			OW.setCPTable("EXPLORAR", j);
+			float [] s5 = {(float)0.8, (float)0.2};
+			OW.setCPTable("HUIR", s5);
+			float [] s6 = {(float)0.3, (float)0.7};
+			OW.setCPTable("DETECTAR PELIGRO", s6);
 			
 			// W
-			W.setCPTable("ATACAR", 0.9, 0.1);
-			W.setCPTable("BUSCAR ARMAS", 0.0, 1.0);
-			W.setCPTable("BUSCAR ENERGIA", 0.2, 0.8);
-			W.setCPTable("EXPLORAR", 0.85, 0.15);
-			W.setCPTable("HUIR", 0.0, 1.0);
-			W.setCPTable("DETECTAR PELIGRO", 0.4, 0.6);
+			float [] a1 = {(float)0.9, (float)0.1};
+			W.setCPTable("ATACAR", a1);
+			float [] a2 = {(float)0.0, (float)1.0};
+			W.setCPTable("BUSCAR ARMAS", a2);
+			float [] a3 = {(float)0.2, (float)0.8};
+			W.setCPTable("BUSCAR ENERGIA", a3);
+			float [] a4 = {(float)0.85, (float)0.15};
+			W.setCPTable("EXPLORAR", a4);
+			float [] a5 = {(float)0.0, (float)1.0};
+			W.setCPTable("HUIR", a5);
+			float [] a6 = {(float)0.4, (float)0.6};
+			W.setCPTable("DETECTAR PELIGRO", a6);
 			
 			// HN
-			HN.setCPTable("ATACAR", 0.3, 0.7);
-			.setCPTable("BUSCAR ARMAS", 0.5, 0.5);
-			HN.setCPTable("BUSCAR ENERGIA", 0.4, 0.6);
-			HN.setCPTable("EXPLORAR", 0.2, 0.8);
-			HN.setCPTable("HUIR", 0.65, 0.35);
-			HN.setCPTable("DETECTAR PELIGRO", 0.8, 0.2);
+			float [] a7 = {(float)0.3, (float)0.7};
+			HN.setCPTable("ATACAR", a7);
+			float [] a8 = {(float)0.5, (float)0.6};
+			HN.setCPTable("BUSCAR ARMAS", a8);
+			float [] a9 = {(float)0.4, (float)0.6};
+			HN.setCPTable("BUSCAR ENERGIA", a9);
+			float [] b1 = {(float)0.2, (float)0.8};
+			HN.setCPTable("EXPLORAR", b1);
+			float [] b2 = {(float)0.65, (float)0.35};
+			HN.setCPTable("HUIR", b2);
+			float [] b3 = {(float)0.8, (float)0.2};
+			HN.setCPTable("DETECTAR PELIGRO", b3);
 			
 			// NE
-			NE.setCPTable("ATACAR", 0.1, 0.9);
-			NE.setCPTable("BUSCAR ARMAS", 0.8, 0.2);
-			NE.setCPTable("BUSCAR ENERGIA", 0.72, 0.28);
-			NE.setCPTable("EXPLORAR", 0.15, 0.85);
-			NE.setCPTable("HUIR", 0.9, 0.1);
-			NE.setCPTable("DETECTAR PELIGRO", 0.95, 0.05);
+			float [] s1 = {(float)0.1, (float)0.9};
+			NE.setCPTable("ATACAR", s1);
+			float [] t1 = {(float)0.8, (float)0.2};
+			NE.setCPTable("BUSCAR ARMAS", t1);
+			float [] u1 = {(float)0.72, (float)0.28};
+			NE.setCPTable("BUSCAR ENERGIA", u1);
+			float [] v1 = {(float)0.15, (float)0.85};
+			NE.setCPTable("EXPLORAR", v1);
+			float [] w1 = {(float)0.9, (float)0.1};
+			NE.setCPTable("HUIR", w1);
+			float [] x1 = {(float)0.95, (float)0.05};
+			NE.setCPTable("DETECTAR PELIGRO", x1);
 			
 			// PW
-			PW.setCPTable("ATACAR", 0.5, 0.5);
-			PW.setCPTable("BUSCAR ARMAS", 0.95, 0.05);
-			PW.setCPTable("BUSCAR ENERGIA", 0.5, 0.5);
-			PW.setCPTable("EXPLORAR", 0.4, 0.6);
-			PW.setCPTable("HUIR", 0.4, 0.6);
-			PW.setCPTable("DETECTAR PELIGRO", 0.0, 1.0);
+			float [] y1 = {(float)0.5, (float)0.5};
+			PW.setCPTable("ATACAR", y1);
+			float [] z1 = {(float)0.95, (float)0.05};
+			PW.setCPTable("BUSCAR ARMAS", z1);
+			float [] k = {(float)0.5, (float)0.5};
+			PW.setCPTable("BUSCAR ENERGIA", k);
+			float [] l = {(float)0.4, (float)0.6};
+			PW.setCPTable("EXPLORAR", l);
+			float [] m = {(float)0.4, (float)0.6};
+			PW.setCPTable("HUIR", m);
+			float [] n = {(float)0.0, (float)1.0};
+			PW.setCPTable("DETECTAR PELIGRO", n);
 			
 			// PH
-			PH.setCPTable("ATACAR", 0.5, 0.5);
-			PH.setCPTable("BUSCAR ARMAS", 0.5, 0.5);
-			PH.setCPTable("BUSCAR ENERGIA", 0.95, 0.05);
-			PH.setCPTable("EXPLORAR", 0.4, 0.6);
-			PH.setCPTable("HUIR", 0.4, 0.6);
-			PH.setCPTable("DETECTAR PELIGRO", 0.5, 0.5);
+			float [] o = {(float)0.5, (float)0.5};
+			PH.setCPTable("ATACAR", o);
+			float [] p = {(float)0.5, (float)0.5};
+			PH.setCPTable("BUSCAR ARMAS", p);
+			float [] q = {(float)0.95, (float)0.05};
+			PH.setCPTable("BUSCAR ENERGIA", q);
+			float [] r = {(float)0.4, (float)0.6};
+			PH.setCPTable("EXPLORAR", r);
+			float [] s = {(float)0.4, (float)0.6};
+			PH.setCPTable("HUIR", s);
+			float [] t = {(float)0.5, (float)0.5};
+			PH.setCPTable("DETECTAR PELIGRO", t);
 			
 			// H
-			H.setCPTable("ATACAR", 0.9, 0.1);
-			H.setCPTable("BUSCAR ARMAS", 0.6, 0.4);
-			H.setCPTable("BUSCAR ENERGIA", 0.1, 0.9);
-			H.setCPTable("EXPLORAR", 0.8, 0.2);
-			H.setCPTable("HUIR", 0.1, 0.9);
-			H.setCPTable("DETECTAR PELIGRO", 0.15, 0.85);
+			float [] u = {(float)0.9, (float)0.1};
+			H.setCPTable("ATACAR", u);
+			float [] v = {(float)0.6, (float)0.4};
+			H.setCPTable("BUSCAR ARMAS", v);
+			float [] w = {(float)0.1, (float)0.9};
+			H.setCPTable("BUSCAR ENERGIA", w);
+			float [] x = {(float)0.95, (float)0.1};
+			H.setCPTable("EXPLORAR", x);
+			float [] y = {(float)0.95, (float)0.1};
+			H.setCPTable("HUIR", y);
+			float [] z = {(float)0.95, (float)0.1};
+			H.setCPTable("DETECTAR PELIGRO", z);
 			
 			net.compile();
 			
@@ -166,8 +214,6 @@ public class InterfazGrafica extends JFrame {
 			e.printStackTrace();
 		}
 	}
-	
-	
 
 	public AccionActual getActualAction() {
 		return actualAction;
